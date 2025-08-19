@@ -1,30 +1,31 @@
-/* Reset + قواعد أساسية */
 * {
-    border: none;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
+    border: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background-color: #fafafa;
-    height: 100vh;
+    background-color: #fafafa;
+    height: 100vh;
 }
 
 main {
-    height: 100vh;
-    margin: auto;
-    max-width: 935px;
+    height: 100vh;
+    margin: auto;
+    max-width: 935px;
 }
 
 a { text-decoration: none; }
 h1 { margin: 20px 0; }
 ul { list-style: none; }
 
-/* Flex rules */
+/**
+ * Flex rules
+ */
 .flex {
-    display: flex;
+    display: flex;
 }
 
 .direction-column { flex-direction: column; }
@@ -32,20 +33,24 @@ ul { list-style: none; }
 .align-items-center { align-items: center; }
 .flex-wrap { flex-wrap: wrap; }
 
-/* Panel */
+/**
+ * Panel
+ */
 .panel {
-    background-color: white;
-    border: 1px solid #dbdbdb;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #dbdbdb;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 #auth { max-width: 350px; }
 #mobile { max-width: 454px; }
 #mobile img { height: 618px; }
 
-/* Login section */
+/**
+ * Login section
+ */
 .login-with-fb,
 form { width: 100%; }
 
@@ -55,54 +60,66 @@ form { padding: 30px 20px; }
 .login-with-fb { padding: 30px 20px 20px 20px; }
 form .sr-only { display: none; }
 
-/* تعديل الحقول لتصبح طبيعية */
+/* أنماط حقل الإدخال العامة */
 form input {
-    background-color: #fafafa;
-    border: 1px solid #dbdbdb;
-    border-radius: 3px;
-    color: #000; /* النص أسود طبيعي */
-    margin-bottom: 8px;
-    padding: 10px;
-    width: 100%;
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    color: #000;
+    margin-bottom: 8px;
+    padding: 10px;
+    width: 100%;
 }
-
-/* Placeholder رمادي فقط */
 form input::placeholder { color: #888; }
-
-/* حقل كلمة المرور طبيعي مع ظهور العين تلقائياً في المتصفح */
-input[type="password"] {
-    -webkit-text-security: none;
-    color: #000; /* نص أسود طبيعي */
+form input:focus {
+    border: 1px solid #808080;
+    outline: none;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
 }
 
-/* تأثير التركيز على الحقول */
-form input:focus {
-    border: 1px solid #808080;
-    outline: none;
-    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+/* الأنماط الخاصة بزر إظهار/إخفاء كلمة المرور */
+.password-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 8px;
+}
+.password-container input {
+    width: 100%;
+    padding-right: 40px;
+}
+.password-toggle-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.password-toggle-btn img {
+    height: 15px;
 }
 
 /* زر تسجيل الدخول */
 form button {
-    background-color: #0095f6;
-    border-radius: 5px;
-    color: #fff;
-    font-weight: bold;
-    height: 35px;
-    margin-top: 10px;
-    width: 100%;
-    cursor: pointer;
-    transition: 0.2s;
+    background-color: #0095f6;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    height: 35px;
+    margin-top: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.2s;
 }
-
 form button:hover { background-color: #007acc; }
 form button:active { background-color: #005f99; }
 
 /* Separator */
 .separator span {
-    background-color: #dbdbdb;
-    height: 1px;
-    width: calc(100% - 10px);
+    background-color: #dbdbdb;
+    height: 1px;
+    width: calc(100% - 10px);
 }
 .separator .or { color: #808080; font-weight: bold; }
 .separator { padding: 0 20px; }
@@ -127,8 +144,8 @@ form button:active { background-color: #005f99; }
 
 /* Footer */
 footer {
-    margin: 0 auto 30px auto;
-    max-width: 935px;
+    margin: 0 auto 30px auto;
+    max-width: 935px;
 }
 footer ul { margin-bottom: 20px; }
 footer ul li { margin: 0 10px 10px; } 
@@ -139,20 +156,20 @@ footer .copyright { font-weight: bold; text-align: center; text-transform: upper
 
 /* رسالة الخطأ مثل انستغرام */
 .error-message {
-    color: #ed4956; /* اللون الأحمر الرسمي لإنستغرام */
-    font-size: 12px;
-    display: none;
-    margin-bottom: 10px;
+    color: #ed4956;
+    font-size: 12px;
+    display: none;
+    margin-bottom: 10px;
 }
 
 /* حقل الخطأ يكتسب حد أحمر عند الخطأ */
 input.error {
-    border: 1px solid #ed4956;
+    border: 1px solid #ed4956;
 }
 
 /* Media queries */
 @media screen and (max-width: 767px) {
-    main { margin: 30px auto 50px auto; }
-    footer .copyright,
-    footer ul li a { font-size: 13px; }
+    main { margin: 30px auto 50px auto; }
+    footer .copyright,
+    footer ul li a { font-size: 13px; }
 }
