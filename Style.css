@@ -12,106 +12,104 @@ body {
 }
 
 main {
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     margin: auto;
     max-width: 935px;
 }
 
-a { text-decoration: none; }
-h1 { margin: 20px 0; }
-ul { list-style: none; }
+a {
+    text-decoration: none;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+ul {
+    list-style: none;
+}
 
 /**
  * Flex rules
  */
-
 .flex {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
 }
 
 .direction-column {
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
-    -moz-box-direction: normal;
-    -moz-box-orient: vertical;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
 }
 
 .justify-content-center {
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
     justify-content: center;
 }
 
 .align-items-center {
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
     align-items: center;
 }
 
 .flex-wrap {
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
 
 /**
- *
+ * Common styles
  */
-
 .panel {
     background-color: white;
     border: 1px solid #dbdbdb;
     margin-bottom: 10px;
     padding: 10px;
+    text-align: center;
 }
 
-#auth { max-width: 350px; }
-#mobile { max-width: 454px; }
+#auth {
+    max-width: 350px;
+}
 
-#mobile img {
-    height: 618px;
+#mobile {
+    max-width: 454px;
 }
 
 /**
  * Login section
  */
 .login-with-fb,
-form { width: 100%; }
+form {
+    width: 100%;
+}
 
 .register,
-form { padding: 30px 20px; }
+form {
+    padding: 30px 20px;
+}
 
-.login-with-fb { padding: 30px 20px 20px 20px; }
+.login-with-fb {
+    padding: 30px 20px 20px 20px;
+}
 
-form .sr-only { display: none; }
+form .sr-only {
+    display: none;
+}
 
 form input {
     background-color: #fafafa;
     border: 1px solid #dbdbdb;
     border-radius: 3px;
-    color: #808080;
+    color: #262626; /* لون النص أسود */
     margin-bottom: 8px;
     padding: 10px 10px;
     width: 100%;
 }
 
 form input::placeholder {
-    color: #808080;
+    color: #999; /* لون النص المؤقت */
 }
 
 form input:focus {
-    border: 1px solid #808080;
+    border-color: #8e8e8e;
     outline: none;
 }
 
@@ -123,55 +121,90 @@ form button {
     height: 35px;
     margin-top: 10px;
     width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+form button:hover {
+    background-color: #0087f9;
+}
+
+form button:active {
+    background-color: #0076e6;
+    transform: translateY(1px);
 }
 
 /**
- * Separator login form from login with fb
+ * Separator
  */
 .separator span {
     background-color: #dbdbdb;
     height: 1px;
-    width: calc(100% - 10px);
+    width: 100%;
 }
 
 .separator .or {
     color: #808080;
     font-weight: bold;
+    margin: 0 10px;
 }
 
-.separator { padding: 0 20px; }
-.separator span:first-child { margin-right: 10px;}
-.separator span:last-child { margin-left: 10px;}
+.separator {
+    padding: 0 20px;
+}
 
 /**
  * Login with fb section
  */
-.login-with-fb a { 
-    color: #385185; 
+.login-with-fb a {
+    color: #385185;
 }
 
-.login-with-fb > a { font-size: 12px; }
-.login-with-fb div a { font-weight: bold; }
-.login-with-fb div { margin-bottom: 15px; }
+.login-with-fb > a {
+    font-size: 12px;
+}
+
+.login-with-fb div a {
+    font-weight: bold;
+}
+
+.login-with-fb div {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 /**
  * Register section
  */
-.register * { font-size: 14px; }
-.register a { 
-    color: #0095f6;
-    font-weight: bold;
+.register * {
+    font-size: 14px;
 }
 
-.register p { margin-right: 5px; }
+.register a {
+    color: #0095f6;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.register p {
+    margin-left: 5px;
+}
 
 /**
  * App download
  */
-.app-download { padding: 15px; }
-.app-download p { padding: 10px 0; }
-.app-download img { 
-    height: 40px; 
+.app-download {
+    padding: 15px;
+}
+
+.app-download p {
+    padding: 10px 0;
+}
+
+.app-download img {
+    height: 40px;
     margin: 0 5px;
 }
 
@@ -181,25 +214,43 @@ form button {
 footer {
     margin: 0 auto 30px auto;
     max-width: 935px;
-}
-footer ul { margin-bottom: 20px; }
-footer ul li { margin: 0 10px 10px; } 
-footer ul li a { color: #385185; }
-footer .copyright { color: #808080; }
-footer ul li a,
-footer .copyright { 
-    font-weight: bold;
     text-align: center;
-    text-transform: uppercase;
- }
+}
 
+footer ul {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+footer ul li {
+    margin: 0 10px 10px;
+}
+
+footer ul li a {
+    color: #8e8e8e;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+footer .copyright {
+    color: #8e8e8e;
+    font-size: 12px;
+}
 
 /**
  * Media queries
  */
-
 @media screen and (max-width: 767px) {
-    main { margin: 30px auto 50px auto; }
+    main {
+        margin: 30px auto 50px auto;
+    }
+
     footer .copyright,
-    footer ul li a { font-size: 13px; }
+    footer ul li a {
+        font-size: 11px;
+    }
 }
